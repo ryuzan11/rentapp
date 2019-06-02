@@ -7,5 +7,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gender = Gender.find(@user.gender_id)
+    @renthouses = RentHouse.where(user_id: current_user)
   end
 end
