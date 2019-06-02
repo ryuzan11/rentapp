@@ -1,0 +1,42 @@
+<%= render partial: "share/header" %>
+<h1>家賃情報show</h1><br>
+
+<p>
+  <strong>建物：</strong>
+  <%= @renthouse.building_name %>
+</p>
+
+<p>
+  <strong>家賃：</strong>
+  <%= converting_to_jpy(@renthouse.rent) %>
+</p>
+
+<p>
+  <strong>都道府県：</strong>
+  <%= @renthouse.prefecture.pref_name %>
+</p>
+
+<p>
+  <strong>市区町村：</strong>
+  <%= @renthouse.city.city_name %>
+</p>
+
+<!-- <p>
+  <strong>路線：</strong>
+  <%= @renthouse.line_name %>
+</p> -->
+
+<p>
+  <strong>最寄駅：</strong>
+  <%= @renthouse.station_name + "駅" %>
+</p>
+
+<%= link_to '一覧　', root_path %>
+
+<% if user_signed_in? && current_user.id == @renthouse.user_id %>
+  <%= link_to '編集', edit_rent_house_path(@renthouse) %>
+  <button data-modal="delete-item" data-open="modal" >削除</button>
+  <%= render "confirmation_modal", renthouse: @renthouse %>
+<% end %>
+
+<p><input type="button" id="return" value="もどる" onclick="history.back()"></p>

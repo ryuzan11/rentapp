@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :gender
+  belongs_to :gender
   # accepts_nested_attributes_for :
+  has_many :rentHouses
 end
