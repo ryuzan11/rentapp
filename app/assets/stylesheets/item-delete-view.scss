@@ -1,0 +1,88 @@
+.modal.is-animate {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+.modal.is-show {
+    display: block;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    opacity: 0;
+    -webkit-transform: translate(0, -10px);
+    transform: translate(0, -10px);
+    background-color:rgba(0,0,0,0.75);
+}
+
+.modal-banner {
+    text-align: center;
+}
+
+.modal-inner {
+    position: relative;
+    overflow: hidden;
+    width: 95%;
+    max-width: 375px;
+    margin: 8px auto;
+    background: #fff;
+}
+
+.modal-body {
+    padding: 32px 2.5%;
+    line-height: 1.5;
+    z-index: 1;
+}
+
+.modal-head {
+    font-size: 16px;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.modal-btn-cancel {
+    float: left;
+}
+
+.modal-btn {
+    border-top: 1px solid #ccc;
+    width: 50%;
+    text-align: center;
+    line-height: 49px;
+}
+
+// input {
+//     border: 0;
+//     outline: 0;
+//     font-family: inherit;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+// }
+
+.modal-btn-submit {
+    float: right;
+    border-left: 1px solid #ccc;
+    color: #0099e8;
+}
+
+button, [type="button"], [type="date"], [type="datetime"], [type="datetime-local"], [type="email"], [type="month"], [type="number"], [type="password"], [type="reset"], [type="search"], [type="submit"], [type="tel"], [type="text"], [type="time"], [type="url"], [type="week"], select, textarea {
+    min-height: 1.5em;
+}
+button {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
