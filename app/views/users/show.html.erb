@@ -1,5 +1,38 @@
 <%= render partial: "share/header" %>
 <h1><%= @user.nickname + "さんのプロフィール" %></h1>
-<p><%= @user.email  %></p>
-<p><%= @gender.gender  %></p>
+<br>
+<%= link_to '物件一覧', root_path %><br/>
+<%= link_to '物件登録', new_rent_house_path(@renthouse) %>
+<br><br>
+<table>
+  <thead>
+    <tr><%= "メールアドレス：　" + @user.email  %></tr><br>
+    <tr><%= "性別：　" + @gender.gender  %></tr>
+  </thead>
+</table><br>
+
+<h2>投稿一覧</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>建物名</th>
+        <th>家賃</th>
+        <th>都道府県</th>
+        <th>市区町村</th>
+<!--           <th>路線</th> -->
+        <th>最寄駅</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @renthouses.each do |renthouses| %>
+        <tr>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
+          <td><%= link_to '　編集', edit_rent_house_path(renthouses) %></td>
+          <td><button data-modal="delete-item" data-open="modal" >　削除</button></td>
+            <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 
