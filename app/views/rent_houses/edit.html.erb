@@ -17,7 +17,7 @@
   <div class="field">
     <%= "都道府県" %>
     <span class="container-span">必須</span><br>
-    <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :pref_name, {}, id: "pref_edit" ) %>
+    <%= f.collection_select( :prefecture_id, Prefecture.where(id: 13), :id, :pref_name, {}, id: "pref_edit" ) %>
   </div>
 
   <div class="field">
