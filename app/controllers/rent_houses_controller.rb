@@ -3,7 +3,7 @@ class RentHousesController < ApplicationController
   before_action :set_renthouse, only: [:show ,:edit, :update]
 
   def index
-    @renthouses = RentHouse.all
+    @renthouses = RentHouse.all.order("id DESC")
   end
 
   def show
