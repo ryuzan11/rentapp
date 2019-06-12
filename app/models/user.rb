@@ -7,4 +7,5 @@ class User < ApplicationRecord
   belongs_to :gender
   # accepts_nested_attributes_for :
   has_many :rentHouses
+  has_many :comments
 end

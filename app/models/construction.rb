@@ -1,3 +1,0 @@
-class Construction < ApplicationRecord
-
-end
