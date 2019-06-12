@@ -1,0 +1,48 @@
+<h2>物件情報編集</h2>
+
+<%= form_with model: @renthouse do |f| %>
+
+  <div class="field">
+    <%= "建物名" %>
+    <span class="container-span">必須</span><br>
+    <%= f.text_field :building_name, autofocus: true, autocomplete: "building_name" %>
+  </div>
+
+  <div class="field">
+    <%= "家賃" %>
+    <span class="container-span">必須</span><br>
+    <%= f.number_field :rent, autofocus: true, autocomplete: "rent" %>円
+  </div>
+
+  <div class="field">
+    <%= "都道府県" %>
+    <span class="container-span">必須</span><br>
+    <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :pref_name, {}, id: "pref_edit" ) %>
+  </div>
+
+  <div class="field">
+    <%= "市区町村" %>
+    <span class="container-span">必須</span><br>
+    <%= f.collection_select( :city_id, City.all, :id, :city_name, {}, id: "city_edit" )  %>
+  </div>
+
+    <div class="field">
+    <%= "沿線" %></span>
+    <span class="container-span">必須</span><br>
+    <%= f.collection_select( :line_name, RentHouse.where(id: @renthouse.id ), :id, :line_name, {}, id: "line_edit" )  %>
+  </div>
+
+  <div class="field">
+    <%= "駅" %>
+    <span class="container-span">必須</span><br>
+    <%= f.collection_select( :station_name, RentHouse.where(id: @renthouse.id ), :id, :station_name, {}, id: "station_edit" )  %>
+  </div>
+
+  <br/>
+  <div class="actions">
+    <%= f.submit "変更" %>
+  </div>
+
+<% end %>
+
+<p><input type="button" id="return" value="もどる" onclick="history.back()"></p>
