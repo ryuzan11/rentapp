@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :building_type do
+  factory :comment do
     
   end
 end

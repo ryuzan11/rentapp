@@ -1,3 +1,0 @@
-class BuildingType < ApplicationRecord
-
-end
