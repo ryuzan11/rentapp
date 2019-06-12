@@ -1,3 +1,0 @@
-class WalkTime < ApplicationRecord
-
-end

@@ -1,6 +1,19 @@
 <%= render partial: "share/header" %>
 <h1>家賃情報show</h1><br>
 
+<!-- <%= link_to '一覧', root_path %>
+<%= link_to '戻る', onclick='history.back()' %><br/> -->
+
+<button type='button' onclick='root_path'>一覧</button>
+<button type='button' onclick='history.back()'>戻る</button><br/>
+<br/>
+<% if user_signed_in? && current_user.id == @renthouse.user_id %>
+<!--   <%= link_to '編集', edit_rent_house_path(@renthouse) %> -->
+  <button type='button' onclick='edit_rent_house_path(@renthouse)'>編集</button>
+  <button data-modal="delete-item" data-open="modal" >削除</button>
+  <%= render "confirmation_modal", renthouse: @renthouse %>
+<% end %><br/>
+
 <p>
   <strong>建物：</strong>
   <%= @renthouse.building_name %>
@@ -31,12 +44,22 @@
   <%= @renthouse.station_name + "駅" %>
 </p>
 
-<%= link_to '一覧　', root_path %>
-
-<% if user_signed_in? && current_user.id == @renthouse.user_id %>
-  <%= link_to '編集', edit_rent_house_path(@renthouse) %>
-  <button data-modal="delete-item" data-open="modal" >削除</button>
-  <%= render "confirmation_modal", renthouse: @renthouse %>
+<%= form_with( url: rent_house_comments_path(rent_house_id: @renthouse.id)) do%>
+  <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea><br/>
+  <input type="submit" value="SENT">
 <% end %>
 
-<p><input type="button" id="return" value="もどる" onclick="history.back()"></p>
+<!-- <%= form_tag( rent_house_comments_path(rent_house_id: @renthouse.id), method: :post) do %>
+  <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea><br/>
+    <input type="submit" value="SENT">
+<% end %> -->
+
+<h4>＜コメント一覧＞</h4>
+<% if @comments %>
+  <% @comments.each do |comment| %>
+    <p>
+      <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+      <%= comment.text %>
+    </p>
+  <% end %>
+<% end %>
