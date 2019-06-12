@@ -7,6 +7,7 @@ class RentHousesController < ApplicationController
   end
 
   def show
+    @comments = @renthouse.comments.includes(:user)
   end
 
   def new
@@ -56,6 +57,7 @@ class RentHousesController < ApplicationController
   end
 
   def set_renthouse
+    # binding.pry()
     @renthouse = RentHouse.find(params[:id])
   end
 
