@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_cities'
     end
+    resources :comments, only: [:create]
   end
 
 end
