@@ -1,5 +1,5 @@
 class RentHousesController < ApplicationController
-  before_action :authenticate_user!, :except=>[:index]
+  before_action :authenticate_user!, :except=>[:index, :show]
   before_action :set_renthouse, only: [:show ,:edit, :update]
 
   def index
@@ -7,6 +7,8 @@ class RentHousesController < ApplicationController
   end
 
   def show
+    @user = User.find(@renthouse.user_id)
+    @gender = Gender.find(@user.gender_id)
     @comments = @renthouse.comments.includes(:user)
   end
 
