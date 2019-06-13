@@ -24,14 +24,38 @@
       </tr>
     </thead>
     <tbody>
+      <% if user_signed_in? && current_user.id == @user.id %>
       <% @renthouses.each do |renthouses| %>
         <tr>
-          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
-          <td><%= link_to '　編集', edit_rent_house_path(renthouses) %></td>
-          <td><button data-modal="delete-item" data-open="modal" >　削除</button></td>
-            <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
+            <td><%= renthouses.building_name %></td>
+            <td><%= converting_to_jpy(renthouses.rent) %></td>
+            <td><%= renthouses.prefecture.pref_name %></td>
+            <td><%= renthouses.city.city_name %></td>
+            <td><%= renthouses.station_name + "駅" %></td>
+            <td><%= link_to "　詳細", renthouses %></td>
+
+            <td><%= link_to '　編集', edit_rent_house_path(renthouses) %></td>
+            <td><button data-modal="delete-item" data-open="modal" >　削除</button></td>
+              <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
+
         </tr>
       <% end %>
+
+     <% else %>
+
+      <% @renthouses.each do |renthouses| %>
+        <tr>
+          <td><%= renthouses.building_name %></td>
+          <td><%= converting_to_jpy(renthouses.rent) %></td>
+          <td><%= renthouses.prefecture.pref_name %></td>
+          <td><%= renthouses.city.city_name %></td>
+          <td><%= renthouses.station_name + "駅" %></td>
+          <td><%= link_to "　詳細", renthouses %></td>
+        </tr>
+      <% end %>
+
+      <% end %>
+
     </tbody>
   </table>
 
