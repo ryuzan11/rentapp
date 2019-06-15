@@ -1,0 +1,86 @@
+<%= render partial: "share/header" %>
+<h1>家賃情報show</h1><br>
+
+
+<!-- <%= link_to '戻る', onclick='history.back()' %><br/> -->
+<!-- <button type='button' onclick=root_path>物件一覧</button> -->
+<%= link_to '物件一覧', root_path %>
+<button type='button' onclick='history.back()'>戻る</button><br/>
+<br/>
+<% if user_signed_in? && current_user.id == @renthouse.user_id %>
+  <%= link_to '編集', edit_rent_house_path(@renthouse) %>
+<!--   <button type='button' onclick='edit_rent_house_path(@renthouse)'>編集</button> -->
+  <button data-modal="delete-item" data-open="modal" >削除</button>
+  <%= render "confirmation_modal", renthouse: @renthouse %>
+<% end %><br/><br/>
+
+<p>
+  <strong>登録者：</strong>
+  <strong><%= link_to @user.nickname, "/users/#{@user.id}" %></strong>
+</p>
+
+<p>
+  <strong>性別：</strong>
+  <%= @gender.gender %>
+</p>
+
+<p>
+  <strong>建物：</strong>
+  <%= @renthouse.building_name %>
+</p>
+
+<p>
+  <strong>家賃：</strong>
+  <%= converting_to_jpy(@renthouse.rent) %>
+</p>
+
+<p>
+  <strong>都道府県：</strong>
+  <%= @renthouse.prefecture.pref_name %>
+</p>
+
+<p>
+  <strong>市区町村：</strong>
+  <%= @renthouse.city.city_name %>
+</p>
+
+<!-- <p>
+  <strong>路線：</strong>
+  <%= @renthouse.line_name %>
+</p> -->
+
+<p>
+  <strong>最寄駅：</strong>
+  <%= @renthouse.station_name + "駅" %>
+</p>
+
+<% if user_signed_in? %>
+
+  <%= form_with( url: rent_house_comments_path(rent_house_id: @renthouse.id)) do%>
+    <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea><br/>
+    <input type="submit" value="SENT">
+  <% end %>
+
+  <!-- <%= form_tag( rent_house_comments_path(rent_house_id: @renthouse.id), method: :post) do %>
+    <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea><br/>
+      <input type="submit" value="SENT">
+  <% end %> -->
+
+  <h4>【コメント一覧】</h4>
+  <% if @comments %>
+    <% @comments.each do |comment| %>
+      <p>
+        <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+        <%= comment.text %>
+      </p>
+    <% end %>
+  <% end %>
+
+<% else %>
+
+  <br/>
+  <h4>【コメント一覧】</h4>
+  <p>コメントが見たい場合は<%= link_to "ログイン", login_path %>してください</p>
+
+<% end %>
+
