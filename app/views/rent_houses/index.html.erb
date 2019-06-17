@@ -1,8 +1,27 @@
-<%= render partial: "share/header" %>
-<h1>家賃情報index</h1><br>
+<%= render partial: "share/navbar" %>
+
+<header class="masthead" style="background-image: url('images/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>全国家賃リサーチ</h1>
+          <span class="subheading">全国の家賃実態が分かります</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
 <%= link_to '登録', new_rent_house_path %>
+
+  <div class="container">
+
 <% if user_signed_in? %>
-  <table>
+
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>登録者</th>
@@ -12,6 +31,9 @@
         <th>市区町村</th>
   <!--           <th>路線</th> -->
         <th>最寄駅</th>
+        <th>詳細</th>
+        <th>編集</th>
+        <th>削除</th>
       </tr>
     </thead>
     <tbody>
@@ -19,9 +41,12 @@
           <tr>
             <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
             <% if user_signed_in? && current_user.id == renthouses.user_id %>
-              <td><%= link_to '　編集', edit_rent_house_path(renthouses) %></td>
-              <td><button data-modal="delete-item" data-open="modal" >　削除</button></td>
+              <td><%= link_to '編集', edit_rent_house_path(renthouses), class: "btn btn-primary" %></td>
+              <td><button data-modal="delete-item" data-open="modal" class="btn btn-danger">削除</button></td>
                 <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
+            <% else %>
+              <td>権限なし</td>
+              <td>権限なし</td>
             <% end %>
           </tr>
         <% end %>
@@ -30,7 +55,7 @@
 
 <% else %>
 
-  <table>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>登録者</th>
@@ -40,6 +65,9 @@
         <th>市区町村</th>
   <!--           <th>路線</th> -->
         <th>最寄駅</th>
+        <th>詳細</th>
+        <th>編集</th>
+        <th>削除</th>
       </tr>
     </thead>
     <tbody>
@@ -49,9 +77,11 @@
           </tr>
         <% end %>
     </tbody>
-  </table>
+  </table class="table table-striped">
 
   <p align='center'>--------------------------------------------</p>
   <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
 
   <% end %>
+
+</div>
