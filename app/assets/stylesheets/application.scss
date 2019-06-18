@@ -13,8 +13,9 @@
  */
 
 /* Custom bootstrap variables must be set or imported *before* bootstrap.*/
+
 @import "bootstrap";
 @import "rent_houses";
-@import "item-delete-view";
 @import "clean-blog";
 @import "overwrite";
+@import "delete-view";
