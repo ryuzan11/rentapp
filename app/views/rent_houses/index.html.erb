@@ -18,25 +18,21 @@
 
 <div class="container">
   <div class="row">
-    <% if user_signed_in? %>
-      <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <% if user_signed_in? %>
         <%= paginate @renthouses %>
         <% @renthouses.each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
-          <hr>
         <% end %>
-        <%= paginate @renthouses  %>
-      </div>
-
-    <% else %>
-      <div class="col-lg-8 col-md-10 mx-auto">
+        <%= paginate @renthouses %>
+      <% else %>
         <% @renthouses.first(4).each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
           <hr>
         <% end %>
         <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
