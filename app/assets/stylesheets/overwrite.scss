@@ -4,3 +4,9 @@ div.post-preview{
     margin: 10px 0;
   }
 }
+
+nav{
+  > ul.pagination{
+    text-align: center;
+  }
+}
