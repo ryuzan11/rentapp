@@ -9,9 +9,7 @@ require "csv"
 
 
 
-CSV.foreach('db/csv/prefecture.csv') do |row|
-  Prefecture.create(pref_name: row[0])
-end
+
 
 CSV.foreach('db/csv/city.csv') do |row|
   City.create(prefecture_id: row[0], city_cd: row[1], city_name: row[2])
