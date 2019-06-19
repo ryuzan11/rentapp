@@ -7,25 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
 
-# CSV.foreach('db/csv/building_type.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   BuildingType.create(:building_type => row[0])
-# end
 
-# CSV.foreach('db/csv/construction.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   Construction.create(:construction => row[0])
-# end
-
-# CSV.foreach('db/csv/layout.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   Layout.create(:layout => row[0])
-# end
-
-# CSV.foreach('db/csv/old.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   Old.create(:old => row[0])
-# end
-
-# CSV.foreach('db/csv/walk_time.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   WalkTime.create(:walk_time => row[0])
-# end
 
 CSV.foreach('db/csv/prefecture.csv') do |row|
   Prefecture.create(pref_name: row[0])
