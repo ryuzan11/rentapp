@@ -28,7 +28,6 @@
       <% else %>
         <% @renthouses.first(4).each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
-          <hr>
         <% end %>
         <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
       <% end %>
@@ -66,7 +65,7 @@
             </a>
           </li>
         </ul> -->
-        <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
+        <p class="copyright text-muted">Copyright &copy; RentApp 2019</p>
       </div>
     </div>
   </div>
