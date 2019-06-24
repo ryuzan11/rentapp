@@ -1,16 +1,24 @@
 <div class="post-preview">
-  <%= link_to renthouses do %>
-    <h3 class="post-title">
-      <%= renthouses.building_name %>
-      <%= converting_to_jpy(renthouses.rent) %>
-    </h3>
-  <% end %>
-  <h4 class="post-subtitle">
-    <%= renthouses.station_name + "駅" %>
-  </h4>
-  <p class="post-meta">Posted by
+
+  <h3 class="post-title">
+    <%= link_to renthouses.building_name, renthouses %>
+    （最寄駅：<%= renthouses.station_name + "駅" %>）
+  </h3>
+
+  <div class="like-subtitle">
+    <div class="post-subtitle post">
+      <p>家賃：<%= converting_to_jpy(renthouses.rent) %></p>
+    </div>
+    <div id="renthouse-<%= renthouses.id %> " data-renthouse-id="<%= renthouses.id %>" class="post">
+      <%=  render "likes/like", renthouse: renthouses %>
+    </div>
+  </div>
+
+  <p class="post-meta">
+    Posted by
     <%= link_to renthouses.user.nickname, user_path(renthouses.user_id) %> on
-    <%= renthouses.created_at.strftime('%B %d,%Y') %></p>
+    <%= renthouses.created_at.strftime('%B %d , %Y') %></p>
+
   <%= link_to "詳細", renthouses, class: "btn btn-outline-primary" %>
   <% if user_signed_in? && current_user.id == renthouses.user_id %>
     <%= link_to '編集', edit_rent_house_path(renthouses), class: "btn btn-outline-info" %>

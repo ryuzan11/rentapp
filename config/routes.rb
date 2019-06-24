@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+  get 'likes/destroy'
   root 'rent_houses#index'
 
   devise_for :users, :controllers => {
@@ -23,5 +25,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create]
   end
+
+  resources :likes, only: [:create, :destroy]
 
 end

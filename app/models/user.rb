@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   belongs_to :gender
   # accepts_nested_attributes_for :
-  has_many :rentHouses
+  has_many :rent_houses
   has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :like_rentHouses, through: :likes, source: :rent_house
 end

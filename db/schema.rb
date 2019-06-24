@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_063509) do
+ActiveRecord::Schema.define(version: 2019_06_23_024330) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "prefecture_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_06_12_063509) do
     t.string "gender"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "rent_house_id"
+    t.index ["rent_house_id"], name: "index_likes_on_rent_house_id"
+    t.index ["user_id", "rent_house_id"], name: "index_likes_on_user_id_and_rent_house_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "pref_name"
   end
@@ -48,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_063509) do
     t.string "building_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count", default: 0, null: false
     t.index ["city_id"], name: "index_rent_houses_on_city_id"
     t.index ["prefecture_id"], name: "index_rent_houses_on_prefecture_id"
     t.index ["user_id"], name: "index_rent_houses_on_user_id"
