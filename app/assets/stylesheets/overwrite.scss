@@ -52,3 +52,34 @@ button.btn.btn-small{
     padding: 150px 0;
   }
 }
+
+header.masthead{
+  margin-bottom: 0px;
+}
+
+div.row{
+  padding-top: 3rem !important;
+}
+
+div.row.tab {
+  border-bottom: 1px solid #dee2e6;
+}
+
+ul.nav.nav-tabs{
+  border-bottom: none;
+}
+
+div.tab-pane{
+  table{
+    thead{
+      border-bottom: 1px solid #dee2e6;
+      th{
+        border-bottom: none;
+        border-top: none;
+      }
+    }
+    td{
+      border-top: none;
+    }
+  }
+}
