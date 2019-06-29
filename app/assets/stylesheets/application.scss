@@ -13,8 +13,14 @@
  */
 
 /* Custom bootstrap variables must be set or imported *before* bootstrap.*/
+
+/*
+ *= require font-awesome
+ */
+@import "delete-view";
 @import "bootstrap";
 @import "rent_houses";
-@import "item-delete-view";
 @import "clean-blog";
-// @import "overwrite";
+@import "users";
+
+@import "overwrite";

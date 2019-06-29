@@ -6,82 +6,74 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>全国家賃リサーチ</h1>
+          <h1>家賃リサーチ(仮)</h1>
           <span class="subheading">全国の家賃実態が分かります</span>
+          <br/>
+          <%= link_to '登録', new_rent_house_path, class: 'btn btn-dark' %>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-
-<%= link_to '登録', new_rent_house_path %>
-
-  <div class="container">
-
-<% if user_signed_in? %>
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>登録者</th>
-        <th>建物名</th>
-        <th>家賃</th>
-        <th>都道府県</th>
-        <th>市区町村</th>
-  <!--           <th>路線</th> -->
-        <th>最寄駅</th>
-        <th>詳細</th>
-        <th>編集</th>
-        <th>削除</th>
-      </tr>
-    </thead>
-    <tbody>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <% if user_signed_in? %>
+        <%= paginate @renthouses %>
         <% @renthouses.each do |renthouses| %>
-          <tr>
-            <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
-            <% if user_signed_in? && current_user.id == renthouses.user_id %>
-              <td><%= link_to '編集', edit_rent_house_path(renthouses), class: "btn btn-primary" %></td>
-              <td><button data-modal="delete-item" data-open="modal" class="btn btn-danger">削除</button></td>
-                <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
-            <% else %>
-              <td>権限なし</td>
-              <td>権限なし</td>
-            <% end %>
-          </tr>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
-    </tbody>
-  </table>
-
-<% else %>
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>登録者</th>
-        <th>建物名</th>
-        <th>家賃</th>
-        <th>都道府県</th>
-        <th>市区町村</th>
-  <!--           <th>路線</th> -->
-        <th>最寄駅</th>
-        <th>詳細</th>
-        <th>編集</th>
-        <th>削除</th>
-      </tr>
-    </thead>
-    <tbody>
+        <%= paginate @renthouses %>
+      <% else %>
         <% @renthouses.first(4).each do |renthouses| %>
-          <tr>
-            <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
-          </tr>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
-    </tbody>
-  </table class="table table-striped">
-
-  <p align='center'>--------------------------------------------</p>
-  <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
-
-  <% end %>
-
+        <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+<!--         <ul class="list-inline text-center">
+          <li class="list-inline-item">
+            <a href="#">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+        </ul> -->
+        <p class="copyright text-muted">Copyright &copy; RentApp 2019</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/clean-blog.min.js"></script>

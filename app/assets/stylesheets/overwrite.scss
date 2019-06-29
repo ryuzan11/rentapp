@@ -1,0 +1,54 @@
+div.post-preview{
+  > p.post-meta{
+    line-height: 1.5;
+    margin: 0 0 5px 0;
+  }
+}
+
+div.test.user{
+  background: #BAD3FF;
+}
+
+nav{
+  > ul.pagination{
+    text-align: center;
+  }
+}
+
+h3{
+  display: inline;
+}
+
+// h4{
+//   display: inline;
+// }
+
+div.post{
+  display: inline-block;
+}
+
+div.like-subtitle{
+  margin: 3px 0 0 0;
+}
+
+div.post-subtitle{
+  font-weight: 800;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  > p{
+    margin: auto;
+  }
+}
+
+button.btn.btn-small{
+  padding: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.site-heading {
+  padding: 150px 0 150px;
+  color: white;
+  @media only screen and (min-width: 768px) {
+    padding: 150px 0;
+  }
+}

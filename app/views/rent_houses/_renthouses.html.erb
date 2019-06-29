@@ -1,8 +1,29 @@
-  <td><%= link_to renthouses.user.nickname, "/users/#{renthouses.user_id}" %></td>
-  <td><%= renthouses.building_name %></td>
-  <td><%= converting_to_jpy(renthouses.rent) %></td>
-  <td><%= renthouses.prefecture.pref_name %></td>
-  <td><%= renthouses.city.city_name %></td>
-  <!--         <td><%= renthouses.line_name %></td> -->
-  <td><%= renthouses.station_name + "駅" %></td>
-  <td><%= link_to "詳細", renthouses %></td>
+<div class="post-preview">
+
+  <h3 class="post-title">
+    <%= link_to renthouses.building_name, renthouses %>
+    （最寄駅：<%= renthouses.station_name + "駅" %>）
+  </h3>
+
+  <div class="like-subtitle">
+    <div class="post-subtitle post">
+      <p>家賃：<%= converting_to_jpy(renthouses.rent) %></p>
+    </div>
+    <div id="renthouse-<%= renthouses.id %> " data-renthouse-id="<%= renthouses.id %>" class="post">
+      <%=  render "likes/like", renthouse: renthouses %>
+    </div>
+  </div>
+
+  <p class="post-meta">
+    Posted by
+    <%= link_to renthouses.user.nickname, user_path(renthouses.user_id) %> on
+    <%= renthouses.created_at.strftime('%B %d , %Y') %></p>
+
+  <%= link_to "詳細", renthouses, class: "btn btn-outline-primary" %>
+  <% if user_signed_in? && current_user.id == renthouses.user_id %>
+    <%= link_to '編集', edit_rent_house_path(renthouses), class: "btn btn-outline-info" %>
+    <button data-modal="delete-item" data-open="modal" class="btn btn-outline-danger">削除</button>
+      <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
+  <% end %>
+</div>
+<hr>

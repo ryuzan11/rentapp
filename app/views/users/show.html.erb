@@ -1,8 +1,7 @@
-<%= render partial: "share/header" %>
 <h1><%= @user.nickname + "さんのプロフィール" %></h1>
 <br>
-<%= link_to '物件一覧', root_path %><br/>
-<%= link_to '物件登録', new_rent_house_path(@renthouse) %>
+<%= link_to '物件一覧(home)', root_path, class: 'btn btn-success' %><br/>
+<%= link_to '物件登録', new_rent_house_path(@renthouse), class: 'btn btn-warning' %>
 <br><br>
 <table>
   <thead>
@@ -27,17 +26,16 @@
       <% if user_signed_in? && current_user.id == @user.id %>
       <% @renthouses.each do |renthouses| %>
         <tr>
-            <td><%= renthouses.building_name %></td>
-            <td><%= converting_to_jpy(renthouses.rent) %></td>
-            <td><%= renthouses.prefecture.pref_name %></td>
-            <td><%= renthouses.city.city_name %></td>
-            <td><%= renthouses.station_name + "駅" %></td>
-            <td><%= link_to "　詳細", renthouses %></td>
+          <td><%= renthouses.building_name %></td>
+          <td><%= converting_to_jpy(renthouses.rent) %></td>
+          <td><%= renthouses.prefecture.pref_name %></td>
+          <td><%= renthouses.city.city_name %></td>
+          <td><%= renthouses.station_name + "駅" %></td>
+          <td><%= link_to "　詳細", renthouses %></td>
 
-            <td><%= link_to '　編集', edit_rent_house_path(renthouses) %></td>
-            <td><button data-modal="delete-item" data-open="modal" >　削除</button></td>
-              <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
-
+          <td><%= link_to '　編集', edit_rent_house_path(renthouses) %></td>
+          <td><button data-modal="delete-item" data-open="modal" >　削除</button></td>
+            <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
         </tr>
       <% end %>
 
@@ -59,4 +57,30 @@
     </tbody>
   </table>
 
+<h2>お気に入り一覧</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>建物名</th>
+        <th>家賃</th>
+        <th>都道府県</th>
+        <th>市区町村</th>
+<!--           <th>路線</th> -->
+        <th>最寄駅</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @like_rentHouses.each do |renthouses| %>
+        <tr>
+          <td><%= renthouses.building_name %></td>
+          <td><%= converting_to_jpy(renthouses.rent) %></td>
+          <td><%= renthouses.prefecture.pref_name %></td>
+          <td><%= renthouses.city.city_name %></td>
+          <td><%= renthouses.station_name + "駅" %></td>
+          <td><%= link_to "　詳細", renthouses %></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
 
