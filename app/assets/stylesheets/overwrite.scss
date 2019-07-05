@@ -83,3 +83,18 @@ div.tab-pane{
     }
   }
 }
+
+div.rank{
+  table,th,td{
+    border-collapse: collapse;
+    border:1px solid #333;
+    text-align: center;
+  }
+  th{
+    font-size:20px;
+  }
+  td{
+    font-size: 17px;
+  }
+
+}
