@@ -2,15 +2,17 @@ class RentHousesController < ApplicationController
   before_action :authenticate_user!, :except=>[:index, :show]
   before_action :set_renthouse, only: [:show ,:edit, :update]
 
+
   def index
     @renthouses = RentHouse.order("id DESC").page(params[:page]).per(4)
-
+    @most_viewed = RentHouse.order('impressions_count DESC')
   end
 
   def show
     @user = User.find(@renthouse.user_id)
     @gender = Gender.find(@user.gender_id)
     @comments = @renthouse.comments.includes(:user)
+    impressionist(@renthouse, nil, :unique => [:session_hash])
   end
 
   def new
