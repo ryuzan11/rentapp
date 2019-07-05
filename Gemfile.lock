@@ -115,6 +115,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     io-like (0.3.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -311,6 +313,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   font-awesome-rails
+  impressionist
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
