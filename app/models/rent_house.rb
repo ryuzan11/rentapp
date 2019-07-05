@@ -1,4 +1,6 @@
 class RentHouse < ApplicationRecord
+  is_impressionable counter_cache: true
+
   belongs_to :user
   belongs_to :prefecture
   belongs_to :city
