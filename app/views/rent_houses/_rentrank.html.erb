@@ -1,0 +1,30 @@
+<table width="100%">
+  <thead>
+    <tr>
+      <th>順位</th>
+      <th>名前</th>
+      <th>閲覧数</th>
+    </tr>
+  </thead>
+  <% if user_signed_in? %>
+    <tbody>
+      <% most_viewed.first(10).each.with_index(1) do |rank, i| %>
+        <tr>
+          <td><%= "#{i}" %></td>
+          <td><%= rank.building_name %></td>
+          <td><%= rank.impressions_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% most_viewed.first(3).each.with_index(1) do |rank, i| %>
+        <tr>
+          <td><%= "#{i}" %></td>
+          <td><%= rank.building_name %></td>
+          <td><%= rank.impressions_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
