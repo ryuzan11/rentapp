@@ -12,6 +12,9 @@
     <div id="renthouse-<%= renthouses.id %> " data-renthouse-id="<%= renthouses.id %>" class="post">
       <%=  render "likes/like", renthouse: renthouses %>
     </div>
+    <div class="post">
+      <%=  render "share/impression", renthouse: renthouses %>
+    </div>
   </div>
 
   <p class="post-meta">

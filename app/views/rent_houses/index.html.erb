@@ -17,21 +17,32 @@
 </header>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <% if user_signed_in? %>
+  <div class="row box">
+    <% if user_signed_in? %>
+      <div class="col-lg-8 col-md-10 mx-auto">
         <%= paginate @renthouses %>
         <% @renthouses.each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
         <%= paginate @renthouses %>
-      <% else %>
+      </div>
+      <div class="col-lg-3 col-md-2 mx-auto rank">
+        <h5>閲覧ランキング</h5>
+        <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
+      </div>
+    <% else %>
+      <div class="col-lg-9 col-md-10 mx-auto">
         <% @renthouses.first(4).each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
+      </div>
+      <div class="col-lg-3 col-md-2 mx-auto rank">
+        <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
+      </div>
+      <div class="mx-auto">
         <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
