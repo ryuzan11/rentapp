@@ -1,3 +1,3 @@
-$(funciton(){
-  $('div.tab-pane').hide();
-});
+// $(funciton(){
+//   $('div.tab-pane').hide();
+// });
