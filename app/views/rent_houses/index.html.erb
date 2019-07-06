@@ -41,9 +41,13 @@
         <% @renthouses.first(4).each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
+        <hr>
       </div>
       <div class="sidebar col-md-3 mx-auto rank">
-        <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
+        <div class="side-rent-rank">
+          <h5>閲覧ランキング</h5>
+          <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
+        </div>
       </div>
       <div class="mx-auto">
         <p align='center'>さらに物件情報を見たい場合は<%= link_to "ログイン", login_path %>してください</p>
