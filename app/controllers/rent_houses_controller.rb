@@ -4,7 +4,7 @@ class RentHousesController < ApplicationController
 
 
   def index
-    @renthouses = RentHouse.order("id DESC").page(params[:page]).per(4)
+    @renthouses = RentHouse.order("id DESC").page(params[:page]).per(5)
     @most_viewed = RentHouse.order('impressions_count DESC')
   end
 
