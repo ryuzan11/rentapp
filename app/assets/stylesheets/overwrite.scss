@@ -1,7 +1,16 @@
 div.post-preview{
-  > p.post-meta{
-    line-height: 1.5;
-    margin: 0 0 5px 0;
+  div.preview{
+     p.post-meta{
+      line-height: 1.5;
+      margin: 0 0 5px 0;
+      font-size: 18px;
+      font-style: italic;
+      margin-top: 0;
+      color: #6c757d;
+      a{
+      text-decoration: none !important; 
+      }
+    }
   }
 }
 
@@ -58,7 +67,7 @@ header.masthead{
 }
 
 div.row{
-  padding-top: 3rem !important;
+  padding-top: 2.5rem !important;
 }
 
 div.row.tab {
@@ -87,14 +96,48 @@ div.tab-pane{
 div.rank{
   table,th,td{
     border-collapse: collapse;
-    border:1px solid #333;
+    border-bottom:1px solid #333;
     text-align: center;
+    padding: 5px;
   }
   th{
-    font-size:20px;
-  }
-  td{
     font-size: 17px;
   }
+  td{
+    font-size: 15px;
+  }
+}
 
+@media only screen and (min-width: 768px){
+  div.site-heading.updown{
+  padding: 130px 0;
+  }
+}
+
+div.content{
+  background: white;
+}
+
+div.pagination-centar{
+  margin-top: 1rem;
+  justify-content: center;
+  display: flex;
+}
+
+div.side-rent-rank{
+  h5{
+    background: #F84F50;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+    font-size: 17px;
+    margin: 0;
+  }
+  table{
+    background: white;
+  }
+}
+
+body{
+  background: #f8f9fa;
 }

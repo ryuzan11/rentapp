@@ -11,7 +11,7 @@
       <% most_viewed.first(10).each.with_index(1) do |rank, i| %>
         <tr>
           <td><%= "#{i}" %></td>
-          <td><%= rank.building_name %></td>
+          <td><%= link_to rank.building_name, rent_house_path(rank) %></td>
           <td><%= rank.impressions_count %></td>
         </tr>
       <% end %>

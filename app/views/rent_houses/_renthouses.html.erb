@@ -1,32 +1,35 @@
 <div class="post-preview">
+  <div class="preview write">
+    <h3 class="post-title">
+      <%= link_to renthouses.building_name, renthouses %>
+      （最寄駅：<%= renthouses.station_name + "駅" %>）
+    </h3>
 
-  <h3 class="post-title">
-    <%= link_to renthouses.building_name, renthouses %>
-    （最寄駅：<%= renthouses.station_name + "駅" %>）
-  </h3>
+    <div class="like-subtitle">
+      <div class="post-subtitle post">
+        <p>家賃：<%= converting_to_jpy(renthouses.rent) %></p>
+      </div>
+      <div id="renthouse-<%= renthouses.id %> " data-renthouse-id="<%= renthouses.id %>" class="post">
+        <%=  render "likes/like", renthouse: renthouses %>
+      </div>
+      <div class="post">
+        <%=  render "share/impression", renthouse: renthouses %>
+      </div>
+    </div>
 
-  <div class="like-subtitle">
-    <div class="post-subtitle post">
-      <p>家賃：<%= converting_to_jpy(renthouses.rent) %></p>
-    </div>
-    <div id="renthouse-<%= renthouses.id %> " data-renthouse-id="<%= renthouses.id %>" class="post">
-      <%=  render "likes/like", renthouse: renthouses %>
-    </div>
-    <div class="post">
-      <%=  render "share/impression", renthouse: renthouses %>
-    </div>
+    <p class="post-meta">
+      Posted by
+      <%= link_to renthouses.user.nickname, user_path(renthouses.user_id) %> on
+      <%= renthouses.created_at.strftime('%B %d , %Y') %></p>
+
+    <%= link_to "詳細", renthouses, class: "btn btn-outline-primary" %>
+    <% if user_signed_in? && current_user.id == renthouses.user_id %>
+      <%= link_to '編集', edit_rent_house_path(renthouses), class: "btn btn-outline-info" %>
+      <button data-modal="delete-item" data-open="modal" class="btn btn-outline-danger">削除</button>
+        <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
+    <% end %>
   </div>
-
-  <p class="post-meta">
-    Posted by
-    <%= link_to renthouses.user.nickname, user_path(renthouses.user_id) %> on
-    <%= renthouses.created_at.strftime('%B %d , %Y') %></p>
-
-  <%= link_to "詳細", renthouses, class: "btn btn-outline-primary" %>
-  <% if user_signed_in? && current_user.id == renthouses.user_id %>
-    <%= link_to '編集', edit_rent_house_path(renthouses), class: "btn btn-outline-info" %>
-    <button data-modal="delete-item" data-open="modal" class="btn btn-outline-danger">削除</button>
-      <%= render "rent_houses/confirmation_modal", renthouse: renthouses %>
-  <% end %>
+  <div class="preview photo">
+  </div>
 </div>
 <hr>

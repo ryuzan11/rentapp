@@ -5,10 +5,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
+        <div class="site-heading updown">
 <!--           <h2>家賃リサーチ(仮)</h2>
           <span class="subheading">全国の家賃実態が分かります</span> -->
-          <h2>家賃実態を投稿しよう！</h2>
+          <h2>みんなの家賃を投稿しよう！</h2>
           <%= link_to '登録', new_rent_house_path, class: 'btn btn-dark' %>
         </div>
       </div>
@@ -19,24 +19,30 @@
 <div class="container">
   <div class="row box">
     <% if user_signed_in? %>
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <%= paginate @renthouses %>
+      <div class="content col-md-9 mx-auto">
+        <div class="pagination-centar">
+          <%= paginate @renthouses %>
+        </div>
         <% @renthouses.each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
-        <%= paginate @renthouses %>
+        <div class="pagination-centar">
+          <%= paginate @renthouses %>
+        </div>
       </div>
-      <div class="col-lg-3 col-md-2 mx-auto rank">
-        <h5>閲覧ランキング</h5>
-        <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
+      <div class="sidebar col-md-3 mx-auto rank">
+        <div class="side-rent-rank">
+          <h5>閲覧ランキング</h5>
+          <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
+        </div>
       </div>
     <% else %>
-      <div class="col-lg-9 col-md-10 mx-auto">
+      <div class="content col-md-9 mx-auto">
         <% @renthouses.first(4).each do |renthouses| %>
           <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
         <% end %>
       </div>
-      <div class="col-lg-3 col-md-2 mx-auto rank">
+      <div class="sidebar col-md-3 mx-auto rank">
         <%= render partial: "rent_houses/rentrank", locals: { most_viewed: @most_viewed } %>
       </div>
       <div class="mx-auto">
