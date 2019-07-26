@@ -1,14 +1,14 @@
 <%= render partial: "share/navbar" %>
 
-<header class="masthead" style="background-image: url('images/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../images/about-bg.jpg')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
+        <div class="site-heading updown">
           <h2><%= @user.nickname + "さん" %><br/><%= "プロフィール" %></h2>
 <!--           <span class="subheading">全国の家賃実態が分かります</span> -->
-          <%= link_to '物件登録', new_rent_house_path, class: 'btn btn-dark' %>
+          <%# <%= link_to '物件登録', new_rent_house_path, class: 'btn btn-dark' %>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
 <div class="container" >
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <h2>プロフィール</h2>
+      <%# <h2>プロフィール</h2> %>
       <table>
         <thead>
           <tr><%= "メールアドレス：" + @user.email  %></tr><br>
@@ -30,11 +30,11 @@
 
     <div class="row tab">
       <ul class="nav nav-tabs">
-        <li class="nav item">
-          <%= link_to '投稿一覧', '#' , class: "nav-link active", :data => {:toggle => "tab"} %>
+        <li class="nav-item show">
+        <div class="nav-link">投稿一覧</div>
         </li>
-        <li class="nav item">
-          <%= link_to 'お気に入り一覧', '#' , class: "nav-link", :data => {:toggle => "tab"} %>
+        <li class="nav-item">
+          <div class="nav-link">お気に入り一覧</div>
         </li>
       </ul>
     </div>
@@ -84,7 +84,7 @@
           </table>
         </div>
 
-        <div class="tab-pane " id="renthouses-list">
+        <div class="tab-pane" id="renthouses-list">
           <table class="table">
             <thead>
               <tr>
