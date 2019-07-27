@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_cities'
     end
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :likes, only: [:create, :destroy]

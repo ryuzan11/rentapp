@@ -12,6 +12,12 @@ class CommentsController < ApplicationController
     # binding.pry()
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_back(fallback_location: rent_house_path(comment_params[:rent_house_id]))
+  end
+
   private
   def comment_params
     params.permit(:text, :rent_house_id)

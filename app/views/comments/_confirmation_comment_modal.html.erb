@@ -1,0 +1,13 @@
+<aside id="delete-item" class="modal">
+  <div class="modal-inner modal-banner">
+    <div class="modal-body">
+      <div class="modal-head bold">確認<br/>
+        削除すると二度と復活できません。<br><br>本当に削除しますか？
+      </div>
+      <p>
+      <button type="button" class="modal-btn modal-btn-cancel" data-modal="delete-item" data-close="modal">キャンセル</button>
+      <%= link_to '削除する', "/rent_houses/#{comment.rent_house_id}/comments/#{comment.id}", method: :delete, class: 'modal-btn modal-btn-submit' %>
+      </p>
+    </div>
+  </div>
+</aside>
