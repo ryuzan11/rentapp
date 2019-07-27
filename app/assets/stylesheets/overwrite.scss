@@ -76,8 +76,15 @@ div.row{
   padding-top: 2.5rem !important;
 }
 
-div.row.tab {
+div.row.nav{
   border-bottom: 1px solid #dee2e6;
+}
+
+div.row.tab{
+  background-color: white;
+  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
 }
 
 ul.nav.nav-tabs{
@@ -117,7 +124,7 @@ div.rank{
 
 @media only screen and (min-width: 768px){
   div.site-heading.updown{
-  padding: 130px 0;
+  padding: 20px 0;
   }
 }
 
