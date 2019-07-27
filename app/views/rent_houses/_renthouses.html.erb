@@ -10,7 +10,7 @@
       <div class="post-subtitle post">
         <p>家賃：<%= converting_to_jpy(renthouses.rent) %></p>
       </div>
-      <div id="renthouse-<%= renthouses.id %> " data-renthouse-id="<%= renthouses.id %>" class="post">
+      <div id="renthouse-<%= renthouses.id%>" data-renthouse-id="<%= renthouses.id %>" class="post">
         <%=  render "likes/like", renthouse: renthouses %>
       </div>
       <div class="post">
