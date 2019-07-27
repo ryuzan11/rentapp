@@ -8,7 +8,10 @@
 
   <span class="like">
     <% if renthouse.fav?(current_user) %>
-      <%= form_for(renthouse.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
+      <%= form_for(renthouse.likes.find_by(user_id: current_user.id), 
+        method: :delete, 
+        remote: true) do |f| 
+      %>
         <%= button_tag(class: "btn btn-small") do %>
           <%= content_tag :i, "#{renthouse.likes_count}", class: "fas fa-star fa-large" %>
         <% end %>
