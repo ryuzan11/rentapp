@@ -17,3 +17,42 @@
   background-color: black;
   color: white;
 }
+
+.renthouse-table{
+  font-size:1rem;
+  text-align: left;
+  .view-table{
+    width: 100%;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    .view-table-tbody{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+      background: transparent;
+      .view-table-tr{
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+        border-left: 1px solid #dbdbdb;
+        .view-table-title{
+          background-color: #eeeeee;
+          width: 90px;
+          text-align: center;
+          padding: 10px;
+          border-right: 1px solid #dbdbdb;
+          border-collapse: collapse;
+          vertical-align: middle;
+        }
+        .view-table-body{
+          // width: 245px;
+          padding: 10px 0;
+          box-sizing: border-box;
+          border-right: 1px solid #dbdbdb;
+          border-collapse: collapse;
+        }
+      }
+    }
+  }
+}

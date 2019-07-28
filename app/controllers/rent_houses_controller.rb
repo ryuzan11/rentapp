@@ -13,6 +13,7 @@ class RentHousesController < ApplicationController
     @gender = Gender.find(@user.gender_id)
     @comments = @renthouse.comments.includes(:user)
     impressionist(@renthouse, nil, :unique => [:session_hash])
+    @most_viewed = RentHouse.order('impressions_count DESC')
   end
 
   def new
@@ -62,7 +63,6 @@ class RentHousesController < ApplicationController
   end
 
   def set_renthouse
-    # binding.pry()
     @renthouse = RentHouse.find(params[:id])
   end
 
