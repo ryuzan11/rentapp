@@ -94,6 +94,7 @@ ul.nav.nav-tabs{
 
 div.tab-pane{
   table{
+    text-align: center;
     thead{
       border-bottom: 1px solid #dee2e6;
       th{
@@ -103,6 +104,7 @@ div.tab-pane{
     }
     td{
       border-top: none;
+      vertical-align: middle;
     }
   }
 }

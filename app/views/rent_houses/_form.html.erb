@@ -1,43 +1,59 @@
-<%= form_with model: renthouse do |f| %>
+<%= form_with model: renthouse, class: "justify-content-center" do |f| %>
 
-  <div class="field">
-    <%= "建物名" %>
-    <span class="container-span">必須</span><br>
-    <%= f.text_field :building_name, autofocus: true, autocomplete: "building_name" %>
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">建物名
+    <%# <span class="container-span">必須</span> %>
+    </label>
+    <%= f.text_field :building_name, autofocus: true, autocomplete: "building_name", class: "form-control col-sm-6" %>
   </div>
 
-  <div class="field">
-    <%= "家賃" %>
-    <span class="container-span">必須</span><br>
-    <%= f.number_field :rent, autofocus: true, autocomplete: "rent" %>円
-  </div>
-
-  <div class="field">
-    <%= "都道府県" %>
-    <span class="container-span">必須</span><br>
-    <%= f.collection_select( :prefecture_id, Prefecture.where(id: 13), :id, :pref_name, {:prompt => "-----"}, id: "pref_select" ) %>
-  </div>
-
-  <div class="field city">
-    <%= "市区町村" %>
-    <span class="container-span">必須</span><br>
-    <%= f.select :city_id, [["-----", "0"]], {}, {id: "city_select" } %>
-  </div>
-
-  <div class="field">
-    <%= "沿線" %>
-    <span class="container-span">必須</span><br>
-    <%= f.select :line_name, [["-----", "0"]] %>
-  </div>
-
-  <div class="field">
-    <%= "駅" %>
-    <span class="container-span">必須</span><br>
-    <%= f.select :station_name, [["-----", "0"]] %>
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">家賃
+    <%# <span class="container-span">必須</span> %>
+    </label>
+    <%= f.number_field :rent, autofocus: true, autocomplete: "rent", placeholder: "家賃を入力", class: "form-control col-sm-6" %>
   </div><br/>
 
-  <div class="actions">
-    <%= f.submit "登録" %>
+<div class="form-row justify-content-center">
+  <div class="form-group col-md-4">
+    <label>都道府県
+    <%# <span class="container-span">必須</span><br> %>
+    </label>
+    <%= f.collection_select( :prefecture_id, Prefecture.where(id: 13), :id, :pref_name, {:prompt => "-----"}, id: "pref_select", class: "form-control" ) %>
+  </div>
+
+  <div class="form-group col-md-4">
+    <label>市区町村
+    <%# <span class="container-span">必須</span><br> %>
+    </label>
+    <%= f.select :city_id, [["-----", "0"]], {}, {id: "city_select", class: "form-control" } %>
+  </div>
+</div>
+
+<div class="form-row justify-content-center">
+  <div class="form-group col-md-4">
+    <label>沿線
+    <%# <span class="container-span">必須</span><br> %>
+    </label>
+    <%= f.select :line_name, [["-----", "0"]], {}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group col-md-4">
+    <label>駅
+    <%# <span class="container-span">必須</span><br> %>
+    </label>
+    <%= f.select :station_name, [["-----", "0"]], {}, {class: "form-control"} %>
+  </div>
+</div>
+
+  <div class="form-button row justify-content-center">
+    <div class="actions-return">
+      <input type="button" id="return" class="btn btn-secondary btn-sm rounded-pill" value="もどる" onclick="history.back()">
+    </div>
+
+    <div class="actions-submit">
+      <%= f.submit "登録", class: "btn btn-primary btn-sm rounded-pill" %>
+    </div>
   </div>
 
 <% end %>
