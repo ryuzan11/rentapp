@@ -14,37 +14,37 @@
     <%= f.number_field :rent, autofocus: true, autocomplete: "rent", placeholder: "家賃を入力", class: "form-control col-sm-6" %>
   </div><br/>
 
-<div class="form-row justify-content-center">
-  <div class="form-group col-md-4">
-    <label>都道府県
-    <%# <span class="container-span">必須</span><br> %>
-    </label>
-    <%= f.collection_select( :prefecture_id, Prefecture.where(id: 13), :id, :pref_name, {:prompt => "-----"}, id: "pref_select", class: "form-control" ) %>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-md-4">
+      <label>都道府県
+      <%# <span class="container-span">必須</span><br> %>
+      </label>
+      <%= f.collection_select( :prefecture_id, Prefecture.where(id: 13), :id, :pref_name, {:prompt => "-----"}, id: "pref_select", class: "form-control" ) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>市区町村
+      <%# <span class="container-span">必須</span><br> %>
+      </label>
+      <%= f.select :city_id, [["-----", "0"]], {}, {id: "city_select", class: "form-control" } %>
+    </div>
   </div>
 
-  <div class="form-group col-md-4">
-    <label>市区町村
-    <%# <span class="container-span">必須</span><br> %>
-    </label>
-    <%= f.select :city_id, [["-----", "0"]], {}, {id: "city_select", class: "form-control" } %>
-  </div>
-</div>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-md-4">
+      <label>沿線
+      <%# <span class="container-span">必須</span><br> %>
+      </label>
+      <%= f.select :line_name, [["-----", "0"]], {}, {class: "form-control"} %>
+    </div>
 
-<div class="form-row justify-content-center">
-  <div class="form-group col-md-4">
-    <label>沿線
-    <%# <span class="container-span">必須</span><br> %>
-    </label>
-    <%= f.select :line_name, [["-----", "0"]], {}, {class: "form-control"} %>
+    <div class="form-group col-md-4">
+      <label>駅
+      <%# <span class="container-span">必須</span><br> %>
+      </label>
+      <%= f.select :station_name, [["-----", "0"]], {}, {class: "form-control"} %>
+    </div>
   </div>
-
-  <div class="form-group col-md-4">
-    <label>駅
-    <%# <span class="container-span">必須</span><br> %>
-    </label>
-    <%= f.select :station_name, [["-----", "0"]], {}, {class: "form-control"} %>
-  </div>
-</div>
 
   <div class="form-button row justify-content-center">
     <div class="actions-return">
