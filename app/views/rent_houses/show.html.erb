@@ -62,7 +62,7 @@
                 <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
                 <%= comment.text %>
                 <% if user_signed_in? && current_user.id == comment.user_id %>
-                  <button data-modal="delete-comment" data-open="modal-comment" class="far fa-trash-alt"></button></td>
+                  <button data-modal="delete-comment<%= comment.id %>" data-open="modal-comment" class="far fa-trash-alt"></button></td>
                   <%= render "comments/confirmation_comment_modal", comment: comment %>
                 <% end %>
               </div>

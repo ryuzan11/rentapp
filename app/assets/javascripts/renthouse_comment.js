@@ -5,15 +5,15 @@ $(function(){
                   <a href=/users/${comment.user_id}>${user_nickname}</a>：
                   </strong>
                   ${comment.text}
-                  <button data-modal="delete-comment" data-open="modal-comment" class="far fa-trash-alt""></button>
-                  <aside id="delete-comment" class="modal-comment">
+                  <button data-modal="delete-comment${comment.id}" data-open="modal-comment" class="far fa-trash-alt""></button>
+                  <aside id="delete-comment${comment.id}" class="modal-comment">
                     <div class="modal-inner modal-banner">
                       <div class="modal-body">
                         <div class="modal-head bold">確認<br>
                           削除すると二度と復活できません。<br><br>本当に削除しますか？
                         </div>
                         <p>
-                        <button type="button" class="modal-btn modal-btn-cancel" data-modal="delete-comment" data-close="modal-comment">キャンセル</button>
+                        <button type="button" class="modal-btn modal-btn-cancel" data-modal="delete-comment${comment.id}" data-close="modal-comment">キャンセル</button>
                         <a class="modal-btn modal-btn-submit" rel="nofollow" data-method="delete" href="/rent_houses/${comment.rent_house_id}/comments/${comment.id}">削除する</a>
                         </p>
                       </div>
