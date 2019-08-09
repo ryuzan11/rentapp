@@ -6,7 +6,6 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading updown">
-          <%# <h2><%= @renthouse.building_name %></h2>
         </div>
       </div>
     </div>
@@ -17,7 +16,6 @@
   <div class="row">
     <div class="content col-md-9 mx-auto">
       <h3 class="post-title"><%= @renthouse.building_name %></h3><br/>
-      <div>家賃：<%= converting_to_jpy(@renthouse.rent) %></div>
 
       <% if user_signed_in? && current_user.id == @renthouse.user_id %>
         <%= link_to '編集', edit_rent_house_path(@renthouse), class: "btn btn-outline-info btn-xs" %>
@@ -30,8 +28,10 @@
         <table class="view-table">
           <tbody class="view-table-tbody">
             <tr class="view-table-tr">
+              <th class="view-table-title">家賃</th>
+              <td class="view-table-body"><%= converting_to_jpy(@renthouse.rent) %></td>
               <th class="view-table-title">登録者</th>
-              <td class="view-table-body" colspan="3"><%= link_to @user.nickname, "/users/#{@user.id}" %></td>
+              <td class="view-table-body"><%= link_to @user.nickname, "/users/#{@user.id}" %></td>
               <th class="view-table-title">性別</th>
               <td class="view-table-body"><%= @gender.gender %></td>
             </tr>

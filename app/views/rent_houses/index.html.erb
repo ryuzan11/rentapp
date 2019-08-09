@@ -37,8 +37,8 @@
       </div>
     <% else %>
       <div class="content col-md-9 mx-auto">
-        <% @renthouses.first(4).each do |renthouses| %>
-          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
+        <% @renthouses.first(4).each do |renthouse| %>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouse: renthouse } %>
         <% end %>
         <hr>
       </div>

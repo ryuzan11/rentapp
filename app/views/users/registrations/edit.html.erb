@@ -1,4 +1,18 @@
-<div class="card devise">
+<%= render partial: "share/navbar" %>
+
+<header class="masthead" style="background-image: url('../images/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading updown">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container form">
   <div class="square">
     <h2>ユーザー情報編集</h2>
 
@@ -46,11 +60,6 @@
       <div class="form-group">
         <%= f.submit "変更", class: 'btn btn-primary' %>
         <input type="button" id="return" value="もどる" onclick="history.back()", class="btn btn-primary">
-      </div>
-
-      <div class="form-group">
-        <%= link_to "ホーム画面へ", root_path, class: "btn btn-info" %>
-        <%= link_to "ログアウト", destroy_user_session_path, class:"btn btn-info" , method: :delete  %>
       </div>
 
     <% end %>
