@@ -23,7 +23,7 @@
 - 駅毎の統計
 - 物件情報項目の追加
 
-##技術
+## 技術
 - RubyonRails
 - Ruby
 - jQuery
