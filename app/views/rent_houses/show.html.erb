@@ -19,7 +19,7 @@
 
       <% if user_signed_in? && current_user.id == @renthouse.user_id %>
         <%= link_to '編集', edit_rent_house_path(@renthouse), class: "btn btn-outline-info btn-xs" %>
-        <button data-modal="delete-item" data-open="modal" class="btn btn-outline-danger btn-xs">削除</button>
+        <button data-modal="delete-item<%= @renthouse.id %>" data-open="modal" class="btn btn-outline-danger btn-xs">削除</button>
         <%= render "confirmation_modal", renthouse: @renthouse %>
       <% end %>
       <br/><br/>
