@@ -52,7 +52,7 @@
 
         <%= form_with( url: rent_house_comments_path(rent_house_id: @renthouse.id), id: "renthouse_comment") do%>
           <textarea cols="30" name="text" placeholder="コメントする" rows="2" class="textbox"></textarea><br/>
-          <input type="submit" value="コメント" class="form__submit">
+          <input type="submit" value="コメント" class="btn btn-info">
         <% end %>
         <br/>
         <div class="comments">
