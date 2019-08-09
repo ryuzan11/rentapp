@@ -22,8 +22,8 @@
         <div class="pagination-centar">
           <%= paginate @renthouses %>
         </div>
-        <% @renthouses.each do |renthouses| %>
-          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
+        <% @renthouses.each do |renthouse| %>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouse: renthouse } %>
         <% end %>
         <div class="pagination-centar">
           <%= paginate @renthouses %>
