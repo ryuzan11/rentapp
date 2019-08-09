@@ -133,3 +133,19 @@ div.contentsrow {
     }
   }
 }
+
+.row.profile{
+  margin-top: 2.5rem;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-top: 0px !important;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  .col-lg-8.col-md-10.mx-auto{
+  padding: 1.5rem 0;
+  }
+}
+
+.tab-pane.profile{
+  margin-left: 1rem;
+}

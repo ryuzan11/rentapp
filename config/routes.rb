@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   get 'likes/destroy'
   root 'rent_houses#index'
 
-  devise_for :users, :controllers => {
-   :registrations => 'users/registrations',
-   :sessions => 'users/sessions',
-   :passwords => 'users/passwords'
+  devise_for :users,
+   only: [:registrations, :sessions, :passwords],
+   controllers: {
+    registrations:  'users/registrations',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
   }
 
   devise_scope :user do
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
     delete 'logout' => 'users/sessions#destroy'
   end
 
-  resources :users, :only => [:show, :index]
+  resources :users, only: [:show, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :rent_houses do
     collection do
