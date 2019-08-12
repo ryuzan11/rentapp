@@ -17,7 +17,8 @@ $(document).on('change','#pref_select',function() {
               $('#rent_house_line_name').html(hyphen);
               xml.data.line.forEach(function(value){
                 // console.log(value)
-                option = $('<option>').val(value.line_cd + " : " + value.line_name).text(value.line_name);
+                // option = $('<option>').val(value.line_cd).text(value.line_name);
+                option = $('<option>').attr('id', value.line_cd).val(value.line_name).text(value.line_name);
                 // console.log(option)
                 $('#rent_house_line_name').append(option);
               });
