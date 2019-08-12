@@ -1,30 +1,42 @@
-<%= form_with model: renthouse, class: "justify-content-center" do |f| %>
+<%= form_with model: renthouse, html: { class: "justify-content-center", name: "form" } do |f| %>
 
   <div class="form-group row justify-content-center">
     <label class="col-sm-2 col-form-label text">建物名
-    <%# <span class="container-span">必須</span> %>
+      <span class="container-span">必須</span>
     </label>
-    <%= f.text_field :building_name, autofocus: true, autocomplete: "building_name", class: "form-control col-sm-6" %>
+    <%= f.text_field :building_name, autofocus: true, autocomplete: "building_name", placeholder: "建物名を入力", class: "form-control col-sm-6" %>
   </div>
 
   <div class="form-group row justify-content-center">
     <label class="col-sm-2 col-form-label text">家賃
-    <%# <span class="container-span">必須</span> %>
+    <span class="container-span">必須</span>
     </label>
     <%= f.number_field :rent, autofocus: true, autocomplete: "rent", placeholder: "家賃を入力", class: "form-control col-sm-6" %>
-  </div><br/>
+  </div>
+
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">管理費</label>
+    <%= f.number_field :management_fee, autofocus: true, autocomplete: "management_fee", placeholder: "管理費を入力", class: "form-control col-sm-6" %>
+  </div>
+
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">その他費用</label>
+    <%= f.number_field :else_fee, autofocus: true, autocomplete: "else_fee", placeholder: "その他費用を入力", class: "form-control col-sm-6" %>
+  </div>
+  
+  <br/>
 
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
       <label>都道府県
-      <%# <span class="container-span">必須</span><br> %>
+        <span class="container-span">必須</span>
       </label>
-      <%= f.collection_select( :prefecture_id, Prefecture.where(id: 13), :id, :pref_name, {:prompt => "-----"}, id: "pref_select", class: "form-control" ) %>
+      <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :pref_name, {:prompt => "-----"}, id: "pref_select", class: "form-control" ) %>
     </div>
 
     <div class="form-group col-md-4">
       <label>市区町村
-      <%# <span class="container-span">必須</span><br> %>
+        <span class="container-span">必須</span>
       </label>
       <%= f.select :city_id, [["-----", "0"]], {}, {id: "city_select", class: "form-control" } %>
     </div>
@@ -33,16 +45,25 @@
   <div class="form-row justify-content-center">
     <div class="form-group col-md-4">
       <label>沿線
-      <%# <span class="container-span">必須</span><br> %>
+        <span class="container-span">必須</span>
       </label>
       <%= f.select :line_name, [["-----", "0"]], {}, {class: "form-control"} %>
     </div>
 
     <div class="form-group col-md-4">
       <label>駅
-      <%# <span class="container-span">必須</span><br> %>
+        <span class="container-span">必須</span>
       </label>
       <%= f.select :station_name, [["-----", "0"]], {}, {class: "form-control"} %>
+    </div>
+    
+  </div>
+
+  <div class="form-row justify-content-center">
+    <div class="form-group col-md-8">
+      <label >コメント
+      </label>
+      <%= f.text_area :comment, rows: "4", autofocus: true, autocomplete: "comment", class: "form-control" %>
     </div>
   </div>
 

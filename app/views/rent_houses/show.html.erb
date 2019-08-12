@@ -14,15 +14,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="content col-md-9 mx-auto">
+    <div class="content col-md-9 show">
       <h3 class="post-title"><%= @renthouse.building_name %></h3><br/>
 
       <% if user_signed_in? && current_user.id == @renthouse.user_id %>
         <%= link_to '編集', edit_rent_house_path(@renthouse), class: "btn btn-outline-info btn-xs" %>
         <button data-modal="delete-item<%= @renthouse.id %>" data-open="modal" class="btn btn-outline-danger btn-xs">削除</button>
         <%= render "confirmation_modal", renthouse: @renthouse %>
+        <br/>
       <% end %>
-      <br/><br/>
+      <br/>
 
       <div class="renthouse-table">
         <table class="view-table">
