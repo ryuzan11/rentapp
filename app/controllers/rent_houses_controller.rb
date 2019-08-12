@@ -59,7 +59,7 @@ class RentHousesController < ApplicationController
   private
 
   def renthouse_params
-    params.require(:rent_house).permit(:building_name, :rent, :city_id, :prefecture_id, :line_name, :station_name).merge(user_id: current_user.id)
+    params.require(:rent_house).permit(:building_name, :rent, :city_id, :prefecture_id, :line_name, :station_name, :management_fee, :else_fee, :comment).merge(user_id: current_user.id)
   end
 
   def set_renthouse
