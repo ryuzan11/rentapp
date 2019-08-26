@@ -76,8 +76,15 @@ div.row{
   padding-top: 2.5rem !important;
 }
 
-div.row.tab {
+div.row.nav{
   border-bottom: 1px solid #dee2e6;
+}
+
+div.row.tab{
+  background-color: white;
+  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
 }
 
 ul.nav.nav-tabs{
@@ -87,6 +94,7 @@ ul.nav.nav-tabs{
 
 div.tab-pane{
   table{
+    text-align: center;
     thead{
       border-bottom: 1px solid #dee2e6;
       th{
@@ -96,6 +104,7 @@ div.tab-pane{
     }
     td{
       border-top: none;
+      vertical-align: middle;
     }
   }
 }
@@ -117,7 +126,8 @@ div.rank{
 
 @media only screen and (min-width: 768px){
   div.site-heading.updown{
-  padding: 130px 0;
+  padding: 0;
+  margin: 20px 0 10px;
   }
 }
 
@@ -147,4 +157,16 @@ div.side-rent-rank{
 
 body{
   background: #f8f9fa;
+}
+
+.card.devise{
+  margin: 0px 100px ;
+}
+
+.square{
+  margin: 30px 50px ;
+}
+
+.content.col-md-9.show{
+  padding: 15px;
 }

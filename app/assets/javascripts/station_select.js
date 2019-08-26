@@ -1,6 +1,6 @@
 $(document).on('change','#rent_house_line_name',function() {
-  var line_val = $('#rent_house_line_name').val();
-  var line_cd = line_val.replace(/[^0-9^\.]/g,"");
+  var line_cd = $('#rent_house_line_name option:selected').attr('id');
+  // console.log(line_cd)
   var hyphen = $('<option>').val(0).text("-----");
   // console.log(line_num)
   if( line_cd == "" || line_cd == 0 ){

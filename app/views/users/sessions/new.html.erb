@@ -1,34 +1,56 @@
-<h2>ログイン</h2>
+<%= render partial: "share/navbar" %>
 
-<br/><div class="test user">
-【テストユーザー】<br/>
-メールアドレス:test-user@example.com<br/>
-パスワード:aiueo123
-</div><br/>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :Eメール %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :Eメールを保存 %>
+<header class="masthead" style="background-image: url('../images/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading updown">
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
+</header>
 
-<p><input type="button" id="return" value="もどる" onclick="history.back()"></p>
+<div class="container form">
+  <div class="square">
+    <h2>ログイン</h2>
 
-<%= render "users/shared/links" %>
+    <%= form_with( model: User, url: user_session_path, local: true )do |f|%>
+      <%= f.hidden_field :email, value: "user-test@test.com" %>
+      <%= f.hidden_field :password, value: "password" %>
+      <%= f.submit "テストユーザーでログイン", class: "btn btn-danger" %>
+    <% end %><br/>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :Eメール %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+      <div class="form-group">
+          <%= f.check_box :remember_me %>
+          <%= f.label :Eメールを保存 %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.submit "ログイン", class: 'btn btn-primary' %>
+        <input type="button" id="return" value="もどる" onclick="history.back()", class="btn btn-primary">
+      </div>
+
+      <div class="form-group">
+        <%= link_to "サインアップ画面へ", sign_up_path, class: "btn btn-info" %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

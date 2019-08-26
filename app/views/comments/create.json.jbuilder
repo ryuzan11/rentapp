@@ -1,3 +1,2 @@
-json.text @comment.text
-json.user_id @comment.user.id
+json.comment @comment
 json.user_nickname @comment.user.nickname

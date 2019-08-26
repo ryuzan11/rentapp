@@ -1,0 +1,79 @@
+<%= form_with model: @renthouse, class: "justify-content-center" do |f| %>
+
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">建物名
+      <span class="container-span">必須</span>
+    </label>
+    <%= f.text_field :building_name, autofocus: true, autocomplete: "building_name", placeholder: "建物名を入力", class: "form-control col-sm-6" %>
+  </div>
+
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">家賃
+      <span class="container-span">必須</span>
+    </label>
+    <%= f.number_field :rent, autofocus: true, autocomplete: "rent", class: "form-control col-sm-6"  %>
+  </div>
+  
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">管理費</label>
+    <%= f.number_field :management_fee, autofocus: true, autocomplete: "management_fee", placeholder: "管理費を入力", class: "form-control col-sm-6" %>
+  </div>
+
+  <div class="form-group row justify-content-center">
+    <label class="col-sm-2 col-form-label text">その他費用</label>
+    <%= f.number_field :else_fee, autofocus: true, autocomplete: "else_fee", placeholder: "その他費用を入力", class: "form-control col-sm-6" %>
+  </div>
+
+  <br/>
+
+  <div class="form-row justify-content-center">
+    <div class="form-group col-md-4">
+      <label>都道府県
+        <span class="container-span">必須</span>
+      </label>
+      <%= f.collection_select( :prefecture_id, Prefecture.all, :id, :pref_name, {}, id: "pref_edit", class: "form-control" ) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>市区町村
+        <span class="container-span">必須</span><br>
+      </label>
+      <%= f.collection_select( :city_id, City.all, :id, :city_name, {}, id: "city_edit", class: "form-control" )  %>
+    </div>
+  </div>
+
+  <div class="form-row justify-content-center">
+    <div class="form-group col-md-4">
+      <label>沿線
+        <span class="container-span">必須</span><br>
+      </label>
+      <%= f.collection_select( :line_name, RentHouse.where(id: @renthouse.id ), :line_name, :line_name, {}, id: "line_edit", class: "form-control" )  %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>駅
+        <span class="container-span">必須</span><br>
+      </label>
+      <%= f.collection_select( :station_name, RentHouse.where(id: @renthouse.id ), :station_name, :station_name, {}, id: "station_edit", class: "form-control" )  %>
+    </div>
+  </div>
+
+  <div class="form-row justify-content-center">
+    <div class="form-group col-md-8">
+      <label >コメント
+      </label>
+      <%= f.text_area :comment, rows: "4", autofocus: true, autocomplete: "comment", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-button row justify-content-center">
+    <div class="actions-return">
+      <input type="button" id="return" class="btn btn-secondary btn-sm rounded-pill" value="もどる" onclick="history.back()">
+    </div>
+
+    <div class="actions-submit">
+      <%= f.submit "変更", class: "btn btn-primary btn-sm rounded-pill" %>
+    </div>
+  </div>
+
+<% end %>

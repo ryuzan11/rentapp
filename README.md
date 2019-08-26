@@ -1,34 +1,34 @@
 # 家賃リサーチ(仮)
-
 家賃実態が知りたい人の為の投稿サイト
 <https://rentapp2019.herokuapp.com/>
 
-## デモアカウント
+## 制作背景
+『賃貸情報サイトの家賃はウソばっかり！』
+引っ越しで管理会社に行くと、情報サイトに載っている家賃や敷金よりも値下げしてもらった経験はありませんか？
+このサイトでは、実際に賃貸物件に住んでいる住人から情報を投稿して頂き、管理会社と交渉する時に余計な駆け引きを減らすためのサイトです。
 
-```md
-メールアドレス:test-user@example.com
-パスワード:aiueo123
-```
+## 機能
+- ユーザー
+ - ログイン/サインアップ/編集
+ - 自己紹介
+- 物件投稿
+ - 投稿(API)/編集/削除
+ - コメント 投稿/削除(非同期)
+ - ページネーション
+- お気に入り
+ - お気に入り 登録/解除(非同期)
+- 閲覧ランキング
 
-<!-- This README would normally document whatever steps are necessary to get the
-application up and running.
+## 今後の実装予定機能
+- 駅毎の物件情報まとめ
+- 駅毎の統計
+- 物件情報項目の追加
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ... -->
+## 技術
+- RubyonRails
+- Ruby
+- jQuery
+- HTML/SCSS
+- MySQL
+- Heroku
+- Bootstrap

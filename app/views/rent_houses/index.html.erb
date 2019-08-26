@@ -6,14 +6,13 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading updown">
-<!--           <h2>家賃リサーチ(仮)</h2>
-          <span class="subheading">全国の家賃実態が分かります</span> -->
           <h2>みんなの家賃を投稿しよう！</h2>
           <%= link_to '登録', new_rent_house_path, class: 'btn btn-dark' %>
         </div>
       </div>
     </div>
   </div>
+  <%# <div class="container-nav">tabbar設置予定</div> %>
 </header>
 
 <div class="container">
@@ -23,8 +22,8 @@
         <div class="pagination-centar">
           <%= paginate @renthouses %>
         </div>
-        <% @renthouses.each do |renthouses| %>
-          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
+        <% @renthouses.each do |renthouse| %>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouse: renthouse } %>
         <% end %>
         <div class="pagination-centar">
           <%= paginate @renthouses %>
@@ -38,8 +37,8 @@
       </div>
     <% else %>
       <div class="content col-md-9 mx-auto">
-        <% @renthouses.first(4).each do |renthouses| %>
-          <%= render partial: "rent_houses/renthouses", locals: { renthouses: renthouses } %>
+        <% @renthouses.first(4).each do |renthouse| %>
+          <%= render partial: "rent_houses/renthouses", locals: { renthouse: renthouse } %>
         <% end %>
         <hr>
       </div>
@@ -55,46 +54,3 @@
     <% end %>
   </div>
 </div>
-
-<!-- <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-        </ul>
-        <p class="copyright text-muted">Copyright &copy; RentApp 2019</p>
-      </div>
-    </div>
-  </div>
-</footer> -->
-
-<!-- Bootstrap core JavaScript -->
-<!-- <script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-
-<!-- Custom scripts for this template -->
-<!-- <script src="js/clean-blog.min.js"></script> -->

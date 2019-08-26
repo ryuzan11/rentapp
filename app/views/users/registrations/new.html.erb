@@ -1,51 +1,63 @@
 <%= render partial: "share/navbar" %>
 
-<header>
+<header class="masthead" style="background-image: url('../images/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading updown">
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<div class="container">
+<div class="container form">
+  <div class="square">
+    <h2>サインアップ</h2>
 
-<h2>サインアップ</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
+      <div class="form-group">
+        <%= f.label :ニックネーム %><br />
+        <%= f.text_field :nickname, autofocus: true, maxlength: "6", autocomplete: "nickname", class: 'form-control' %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-group">
+        <%= f.label :Eメール %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :ニックネーム %><br />
-    <%= f.text_field :nickname, autofocus: true, maxlength: "6", autocomplete: "nickname" %>
+      <div class="form-group">
+        <%= f.label :性別 %><br />
+        <%= f.collection_select :gender_id, Gender.find(1,2,9), :id, :gender, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード確認 %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "サインアップ", class: 'btn btn-primary' %>
+        <input type="button" id="return" value="もどる" onclick="history.back()", class="btn btn-primary">
+      </div>
+
+      <div class="form-group">
+        <%= link_to "ログイン画面へ", login_path, class: "btn btn-info" %>
+      </div>
+
+    <% end %>
+
   </div>
-
-  <div class="field">
-    <%= f.label :Eメール %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :性別 %><br />
-    <%= f.collection_select :gender_id, Gender.find(1,2,9), :id, :gender %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "サインアップ" %>
-  </div>
-<% end %>
-
-<p><input type="button" id="return" value="もどる" onclick="history.back()"></p>
-
-<%= render "users/shared/links" %>
-
 </div>
+
